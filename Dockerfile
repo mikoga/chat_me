@@ -1,4 +1,5 @@
-FROM python:3.8.20-alpine 
+# Implemented by Miko
+FROM python:3.8.20-alpine
 
 WORKDIR /app
 
