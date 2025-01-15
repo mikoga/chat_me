@@ -1,6 +1,10 @@
-from flask import Flask, render_template, request, redirect, session, jsonify
-import csv 
+from flask import Flask, render_template, request, redirect, session
 from datetime import datetime as dt
+import csv
+
+DELIMITER='|'
+CSV_FILENAME='data/chat.csv'
+
 
 app = Flask(__name__)
 
