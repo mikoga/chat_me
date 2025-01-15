@@ -18,21 +18,24 @@ def handle_number(number):
     # in case an integer was given just show home
     return home()
 
-@app.route('/api/chat/<room>', methods=['GET'])
+
 def get_full_chat_from_room(room):
-    global CSV_FILE, DELIMITER
+    print(room)
     lst=[]
     with open(CSV_FILE,'r',encoding='utf-8') as file:
         reader = csv.DictReader(file,delimiter=DELIMITER)
         for row in reader:
-            if row['room'] == room:
+            if row['room'] == str(room):
                 # "[2024-09-10 14:00:51] Roey: Hi everybody!"
-                lst.append(f"[{row['date']} {row['time']}] {row['username']}: {row['message']}\n")
-    return lst
+                lst.append(f"[{row['date']} {row['time']}] {row['username']}: {row['message']}")
+    print(lst)
+    return '\n'.join(lst)
 
  
 @app.route('/api/chat/<int:room>', methods=['GET', 'POST'])
 def chat(room):
+    if request.method == 'GET':
+        return get_full_chat_from_room(room)
     # extract the data
     username = request.form.get('username')
     message = request.form.get('msg')
