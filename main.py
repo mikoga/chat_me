@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 import csv
 
 DELIMITER='|'
-CSV_FILENAME='data/chats.csv'
+CSV_FILENAME='data/chat.csv'
 
 app = Flask(__name__)
 
