@@ -1,5 +1,27 @@
 version: '3.8'
+<<<<<<< HEAD
 services:
+=======
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "5000:5000"
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    depends_on:
+      - mysql
+
+>>>>>>> 89064f8b4765965f9e96cc3181673ebd878cb9a2
   mysql:
     image: mysql:9.1.0
     container_name: mysql
@@ -12,6 +34,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+<<<<<<< HEAD
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
   python-app:
     build:
@@ -26,3 +49,8 @@ services:
 volumes:
   mysql_data:
   app_data:
+=======
+
+volumes:
+  mysql_data:
+>>>>>>> 89064f8b4765965f9e96cc3181673ebd878cb9a2

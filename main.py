@@ -11,18 +11,18 @@ app = Flask(__name__)
 DELIMITER='|'
 CSV_FILE = "./data/chat.csv"
 
-
+# Implemented by Miko
 @app.route('/')
 def home():
     return render_template('index.html'), 200
 
-
+# Implemented by Eliya
 @app.route('/<int:number>')
 def handle_number(number):
     # in case an integer was given just show home
     return home()
 
-
+# Implemented by Miko
 def get_full_chat_from_room(room):
     print(room)
     lst=[]
@@ -35,7 +35,7 @@ def get_full_chat_from_room(room):
     print(lst)
     return '\n'.join(lst)
 
- 
+# Implemented by Eliya
 @app.route('/api/chat/<int:room>', methods=['GET', 'POST'])
 def chat(room):
     if request.method == 'GET':
